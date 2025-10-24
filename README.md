@@ -405,4 +405,6 @@ veeraragavan@veeraragavan-victus:~/OpenROAD-flow-scripts/flow$ gvim reports/sky1
 ```
 </details>
 
+![Alt Text](Screenshots/synthstat.png)
+
 ----------
