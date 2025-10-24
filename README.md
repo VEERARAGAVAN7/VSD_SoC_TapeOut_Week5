@@ -245,30 +245,30 @@ veeraragavan@veeraragav-victus:~/OpenROAD-flow-scripts/flow$ make DESIGN_CONFIG=
 
 This command runs the synthesis process using the specified design configuration file `config.mk` for the `vsdbabysoc` design on the `sky130hd` platform.
 
-![Alt Text](Screenshots/run1.jpg)
+![Alt Text](Screenshots/run1.png)
 
-![Alt Text](Screenshots/run2.jpg)
+![Alt Text](Screenshots/run2.png)
 
 #### Synthesis netlist
 
 ```shell
 veeraragavan@veeraragav-victus:~/OpenROAD-flow-scripts/flow$ gvim results/sky130hd/vsdbabysoc/base/1_1_yosys.v 
 ```
-![Alt Text](Screenshots/synthnet.jpg)
+![Alt Text](Screenshots/synthnet.png)
 
 #### Synthesis log
 
 ```shell
 veeraragavan@veeraragavan-victus:~/OpenROAD-flow-scripts/flow$ gvim logs/sky130hd/vsdbabysoc/base/1_1_yosys.log
 ```
-![Alt Text](Screenshots/synthlog.jpg)
+![Alt Text](Screenshots/synthlog.png)
 
 #### Synthesis Check
 
 ```shell
 veeraragavan@veeraragavan-victus:~/OpenROAD-flow-scripts/flow$ gvim reports/sky130hd/vsdbabysoc/base/synth_check.txt
 ```
-![Alt Text](Screenshots/synthcheck.jpg)
+![Alt Text](Screenshots/synthcheck.png)
 
 
 #### Synthesis Stats
