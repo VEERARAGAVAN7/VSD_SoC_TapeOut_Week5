@@ -23,27 +23,27 @@
 
 #### Steps to install the OpenROAD :
 ```
-##### 1. Download repository
+#1. Download repository
 $ git clone --recursive https://github.com/The-OpenROAD-Project/OpenROAD.git
 $ cd OpenROAD
 
-##### 2. Install dependencies
+#2. Install dependencies
 $ sudo ./etc/DependencyInstaller.sh
 
-##### 3. Build
+#3. Build
 $ mkdir build
 $ cd build
 $ cmake
 $ make
 $ sudo make install
 
-##### 4. Run tool
+#4. Run tool
 $ openroad
 ```
 
 The below picture ensures the OpenRoad installation :
 
-[OpenROAD_Installation](Screenshots/openroad.png)
+![OpenROAD_Installation](Screenshots/openroad.png)
 
 ###  `RTL2GDS Flow for VSDBabySoC: Initial Steps`
 
