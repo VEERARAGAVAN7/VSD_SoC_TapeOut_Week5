@@ -3,19 +3,47 @@
 ## Floorplan and Placement of VSDBabySoC in OpenROAD
 
 ### 📚 Contents
- - [RTL2GDS Flow for VSDBabySoC: Initial Steps](#rtl2gds-flow-for-vsdbabysoc-initial-steps)
-    - [Key Components of config.mk](#key-components-of-configmk)
-    - [File Structure After Setup](#file-structure-after-setup)
-  - [Run Synthesis](#run-synthesis)
-    - [Synthesis Netlist](#synthesis-netlist)
-    - [Synthesis Log](#synthesis-log)
-    - [Synthesis Check](#synthesis-check)
-    - [Synthesis Stats](#synthesis-stats)
-  - [Run Floorplan](#run-floorplan)
-    - [Floorplan Error and Fix](#floorplan-error-and-fix)
-    - [Floorplan Result (GUI)](#floorplan-result-gui)
- -  [Run Placement](#run-placement)
-    - [Placement Result (GUI)](#placement-result-gui)
+ ### 📚 Contents
+- [OpenROAD Installation](#openroad-installation)
+- [RTL2GDS Flow for VSDBabySoC: Initial Steps](#rtl2gds-flow-for-vsdbabysoc-initial-steps)
+  - [Key Components of config.mk](#key-components-of-configmk)
+  - [File Structure After Setup](#file-structure-after-setup)
+- [Run Synthesis](#run-synthesis)
+  - [Synthesis Netlist](#synthesis-netlist)
+  - [Synthesis Log](#synthesis-log)
+  - [Synthesis Check](#synthesis-check)
+  - [Synthesis Stats](#synthesis-stats)
+- [Run Floorplan](#run-floorplan)
+  - [Floorplan Error and Fix](#floorplan-error-and-fix)
+  - [Floorplan Result (GUI)](#floorplan-result-gui)
+- [Run Placement](#run-placement)
+  - [Placement Result (GUI)](#placement-result-gui)
+
+### `OpenROAD Installation`
+
+#### Steps to install the OpenROAD :
+```
+##### 1. Download repository
+$ git clone --recursive https://github.com/The-OpenROAD-Project/OpenROAD.git
+$ cd OpenROAD
+
+##### 2. Install dependencies
+$ sudo ./etc/DependencyInstaller.sh
+
+##### 3. Build
+$ mkdir build
+$ cd build
+$ cmake
+$ make
+$ sudo make install
+
+##### 4. Run tool
+$ openroad
+```
+
+The below picture ensures the OpenRoad installation :
+
+[OpenROAD_Installation](Screenshots/openroad.png)
 
 ###  `RTL2GDS Flow for VSDBabySoC: Initial Steps`
 
@@ -168,7 +196,7 @@ This setup script is crucial for defining the environment and parameters needed 
 ### `File Structure After Setup`
 
 ```shell
-veeraragavan@veeraragavan-VirtualBox:~/OpenROAD-flow-scripts/flow$ ls -ltrh designs/src/vsdbabysoc/
+veeraragavan@veeraragavan-victus:~/OpenROAD-flow-scripts/flow$ ls -ltrh designs/src/vsdbabysoc/
 total 3.1M
 -rw-rw-r-- 1 veeraragavan veeraragavan 1.1K Jun 29 15:50 avsddac.v
 -rw-rw-r-- 1 veeraragavan veeraragavan  947 Jun 29 15:50 avsdpll.v
@@ -184,7 +212,7 @@ lrwxrwxrwx 1 veeraragavan veeraragavan   87 Jun 29 15:50 primitives.v -> /home/v
 ```
 
 ```shell
-veeraragavan@veeraragavan-VirtualBox:~/OpenROAD-flow-scripts/flow$ ls -ltrh designs/sky130hd/vsdbabysoc/
+veeraragavan@veeraragavan-victus:~/OpenROAD-flow-scripts/flow$ ls -ltrh designs/sky130hd/vsdbabysoc/
 total 32K
 drwxrwxr-x 2 veeraragavan veeraragavan 4.0K Jun 29 15:52 gds
 drwxrwxr-x 2 veeraragavan veeraragavan 4.0K Jun 29 15:52 include
@@ -212,41 +240,41 @@ cd flow
 
 ```shell
 # Ensure you are in the 'flow' directory before running the synthesis command
-make DESIGN_CONFIG=./designs/sky130hd/vsdbabysoc/config.mk synth
+veeraragavan@veeraragav-victus:~/OpenROAD-flow-scripts/flow$ make DESIGN_CONFIG=./designs/sky130hd/vsdbabysoc/config.mk synth
 ```
 
 This command runs the synthesis process using the specified design configuration file `config.mk` for the `vsdbabysoc` design on the `sky130hd` platform.
 
-![Alt Text](Screenshots/1.jpg)
+![Alt Text](Screenshots/run1.jpg)
 
-![Alt Text](Screenshots/2.jpg)
+![Alt Text](Screenshots/run2.jpg)
 
 #### Synthesis netlist
 
 ```shell
-patha@veeraragavan-VirtualBox:~/OpenROAD-flow-scripts/flow$ gvim results/sky130hd/vsdbabysoc/base/1_1_yosys.v
+veeraragavan@veeraragav-victus:~/OpenROAD-flow-scripts/flow$ gvim results/sky130hd/vsdbabysoc/base/1_1_yosys.v 
 ```
-![Alt Text](Screenshots/3.jpg)
+![Alt Text](Screenshots/synthnet.jpg)
 
 #### Synthesis log
 
 ```shell
-veeraragavan@veeraragavan-VirtualBox:~/OpenROAD-flow-scripts/flow$ gvim logs/sky130hd/vsdbabysoc/base/1_1_yosys.log
+veeraragavan@veeraragavan-victus:~/OpenROAD-flow-scripts/flow$ gvim logs/sky130hd/vsdbabysoc/base/1_1_yosys.log
 ```
-![Alt Text](Screenshots/4.jpg)
+![Alt Text](Screenshots/synthlog.jpg)
 
 #### Synthesis Check
 
 ```shell
-veeraragavan@veeraragavan-VirtualBox:~/OpenROAD-flow-scripts/flow$ gvim reports/sky130hd/vsdbabysoc/base/synth_check.txt
+veeraragavan@veeraragavan-victus:~/OpenROAD-flow-scripts/flow$ gvim reports/sky130hd/vsdbabysoc/base/synth_check.txt
 ```
-![Alt Text](Screenshots/5.jpg)
+![Alt Text](Screenshots/synthcheck.jpg)
 
 
 #### Synthesis Stats
 
 ```shell
-veeraragavan@veeraragavan-VirtualBox:~/OpenROAD-flow-scripts/flow$ gvim reports/sky130hd/vsdbabysoc/base/synth_stat.txt
+veeraragavan@veeraragavan-victus:~/OpenROAD-flow-scripts/flow$ gvim reports/sky130hd/vsdbabysoc/base/synth_stat.txt
 ```
 
 <details> <summary><strong>synth_stat.txt</strong></summary>
