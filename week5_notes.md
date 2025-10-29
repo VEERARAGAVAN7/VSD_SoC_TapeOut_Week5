@@ -407,4 +407,78 @@ veeraragavan@veeraragavan-victus:~/OpenROAD-flow-scripts/flow$ gvim reports/sky1
 
 ![Alt Text](Screenshots/synthstat.png)
 
-----------
+----
+
+
+### `Run Floorplan`
+
+```shell
+make DESIGN_CONFIG=./designs/sky130hd/vsdbabysoc/config.mk floorplan
+```
+
+This command initiates the floorplanning process for the `vsdbabysoc` design using the specified configuration file `config.mk` on the `sky130hd` platform.
+
+#### Floorplan Error and Fix
+
+❗**Note:** You may encounter the following error:
+
+```shell
+[ERROR STA-0164] .../vsdbabysoc/lib/avsdpll.lib line 54, syntax error
+Error: floorplan.tcl, 4 STA-0164
+```
+
+**Fix:**
+This error is caused by commented block structures in your Liberty file avsdpll.lib. OpenROAD’s parser does not tolerate partially commented blocks like:
+
+```shell
+//pin (GND#2) {
+//  direction : input;
+//  max_transition : 2.5;
+//  capacitance : 0.001;
+//}
+```
+
+✅ To fix it, change it into multiple line command(/*,*/) from single line command starting at line 54:
+
+![Alt Text](Images/fp_er.png)
+
+After saving the changes, re-run the floorplan step and the flow should proceed without syntax errors. 
+
+![Alt Text](Images/fp1.png)
+
+![Alt Text](Images/fp2.png)
+
+#### Floorplan Result (GUI)
+
+```shell
+make DESIGN_CONFIG=./designs/sky130hd/vsdbabysoc/config.mk gui_floorplan
+```
+
+![Alt Text](Images/fp3_gui.png)
+![Alt Text](Images/fp4_gui.png)
+------
+
+### `Run Placement`
+
+```shell
+make DESIGN_CONFIG=./designs/sky130hd/vsdbabysoc/config.mk place
+```
+This command executes the placement process for the `vsdbabysoc` design, utilizing the configuration file `config.mk` on the `sky130hd` platform to arrange the circuit components optimally within the defined floorplan.
+
+![Alt Text](Images/p1.png)
+
+![Alt Text](Images/p2.png)
+
+#### Placement Result (GUI)
+
+```shell
+make DESIGN_CONFIG=./designs/sky130hd/vsdbabysoc/config.mk gui_place
+```
+
+![Alt Text](Images/p3_gui.png)
+
+To view the Placement Density heatmap in OpenROAD:
+
+Go to **Tools → Heat maps → Placement Density** → **✓ Show numbers**
+
+
