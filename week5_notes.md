@@ -440,13 +440,13 @@ This error is caused by commented block structures in your Liberty file avsdpll.
 
 ✅ To fix it, change it into multiple line command(/*,*/) from single line command starting at line 54:
 
-![Alt Text](Images/fp_er.png)
+![Alt Text](Screenshots/fp_er.png)
 
 After saving the changes, re-run the floorplan step and the flow should proceed without syntax errors. 
 
-![Alt Text](Images/fp1.png)
+![Alt Text](Screenshots/fp1.png)
 
-![Alt Text](Images/fp2.png)
+![Alt Text](Screenshots/fp2.png)
 
 #### Floorplan Result (GUI)
 
@@ -454,8 +454,8 @@ After saving the changes, re-run the floorplan step and the flow should proceed 
 make DESIGN_CONFIG=./designs/sky130hd/vsdbabysoc/config.mk gui_floorplan
 ```
 
-![Alt Text](Images/fp3_gui.png)
-![Alt Text](Images/fp4_gui.png)
+![Alt Text](Screenshots/fp3_gui.png)
+![Alt Text](Screenshots/fp4_gui.png)
 ------
 
 ### `Run Placement`
@@ -465,9 +465,9 @@ make DESIGN_CONFIG=./designs/sky130hd/vsdbabysoc/config.mk place
 ```
 This command executes the placement process for the `vsdbabysoc` design, utilizing the configuration file `config.mk` on the `sky130hd` platform to arrange the circuit components optimally within the defined floorplan.
 
-![Alt Text](Images/p1.png)
+![Alt Text](Screenshots/p1.png)
 
-![Alt Text](Images/p2.png)
+![Alt Text](Screenshots/p2.png)
 
 #### Placement Result (GUI)
 
@@ -475,7 +475,7 @@ This command executes the placement process for the `vsdbabysoc` design, utilizi
 make DESIGN_CONFIG=./designs/sky130hd/vsdbabysoc/config.mk gui_place
 ```
 
-![Alt Text](Images/p3_gui.png)
+![Alt Text](Screenshots/p3_gui.png)
 
 To view the Placement Density heatmap in OpenROAD:
 
